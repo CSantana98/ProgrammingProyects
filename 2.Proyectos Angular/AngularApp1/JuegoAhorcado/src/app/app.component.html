@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col text-center">
+
+      <img src="assets/img/{{ intentos }}.png" class="ahorcado-img">
+
+      <h3>Intentos: 
+        
+        <small>{{ intentos }} / 9 </small>
+      
+      </h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col text-center">
+
+    <h1>{{ palabraOculta }}</h1>
+    
+  </div>
+
+</div>
+
+<div class="row" *ngIf="gana">
+
+  <div class="col text-center">
+
+    <h1>FELICIDADES HAS GANADO :D !!!</h1>
+    
+  </div>
+
+</div>
+
+<div class="row" *ngIf="pierde">
+
+  <div class="col text-center">
+
+    <h1>LO SIENTO, HAS PERDIDO :(</h1>
+    <h2>La palabra correcta era: {{ palabra }}</h2>
+    
+  </div>
+
+</div>
+
+<div class="row" *ngIf="!gana && !pierde">
+
+  <div class="col text-center">
+
+    <!-- El "*ngFor" es una forma que tiene angular de inyectar codigo en el HTML, en este caso para crear un ciclo "for" y clonar esta linea de codigo multiples veces, donde "n" es el numero de elementos que queremos repetir o en este caso el numero de elementos en el arreglo/array que tenemos en el archivo "app.component.ts" -->
+    <button (click)="comprobar( letra )" *ngFor="let letra of letras" class="btn btn-primary">
+      <!-- Cuando escribimos estos caracteres "{{ }}" se le conoce como una Interpolacion de Strings, esto le indica a angular que incruste una variable o un valor dentro de aqui. En este caso la variable es "letra" ya que estamos haciendo referencia a la variable "letra" que esta definida en el ciclo "for" ( " *ngFor="let letra" " ) -->
+      {{ letra  }}
+    </button>
+    
+  </div>
+
+</div>
